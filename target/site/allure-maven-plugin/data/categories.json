@@ -1,0 +1,51 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "2 expectations failed.\nExpected status code <200> but was <401>.\n\nJSON path success doesn't match.\nExpected: <true>\n  Actual: <false>\n",
+      "children" : [ {
+        "name" : "Вход под существующим пользователем",
+        "uid" : "c2b6aa1452fe118d",
+        "parentUid" : "14301e786df28da9dd510d759ae2a8e6",
+        "status" : "failed",
+        "time" : {
+          "start" : 1767128606081,
+          "stop" : 1767128607321,
+          "duration" : 1240
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "14301e786df28da9dd510d759ae2a8e6"
+    }, {
+      "name" : "3 expectations failed.\nExpected status code <401> but was <200>.\n\nJSON path success doesn't match.\nExpected: <false>\n  Actual: <true>\n\nJSON path message doesn't match.\nExpected: is \"You should be authorised\"\n  Actual: null\n",
+      "children" : [ {
+        "name" : "Создание заказа без авторизации с валидными ингредиентами",
+        "uid" : "af6fe6856b3fbb9e",
+        "parentUid" : "7ecbaa41be0b70ee0e6b53ec3d2b538f",
+        "status" : "failed",
+        "time" : {
+          "start" : 1767128612790,
+          "stop" : 1767128614043,
+          "duration" : 1253
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "7ecbaa41be0b70ee0e6b53ec3d2b538f"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

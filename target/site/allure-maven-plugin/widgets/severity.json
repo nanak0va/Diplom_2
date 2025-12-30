@@ -1,0 +1,151 @@
+[ {
+  "uid" : "c2b6aa1452fe118d",
+  "name" : "Вход под существующим пользователем",
+  "time" : {
+    "start" : 1767128606081,
+    "stop" : 1767128607321,
+    "duration" : 1240
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "29b8e66ce422ab2f",
+  "name" : "Вход с пустым email",
+  "time" : {
+    "start" : 1767128603763,
+    "stop" : 1767128604952,
+    "duration" : 1189
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e7916a3148a4d535",
+  "name" : "Вход с неверным email",
+  "time" : {
+    "start" : 1767128604954,
+    "stop" : 1767128606080,
+    "duration" : 1126
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ab5b13f29db00d98",
+  "name" : "Создать уникального пользователя без обязательного поля name",
+  "time" : {
+    "start" : 1767128600494,
+    "stop" : 1767128600697,
+    "duration" : 203
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "f6a0cd88169ab415",
+  "name" : "Создать уникального пользователя без обязательного поля password",
+  "time" : {
+    "start" : 1767128600291,
+    "stop" : 1767128600491,
+    "duration" : 200
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fa145fc6e6f992b5",
+  "name" : "Успешное создание пользователя с валидными данными",
+  "time" : {
+    "start" : 1767128596536,
+    "stop" : 1767128599951,
+    "duration" : 3415
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ca0914fbda2dc0ff",
+  "name" : "Создать уникального пользователя без обязательного поля email",
+  "time" : {
+    "start" : 1767128600001,
+    "stop" : 1767128600290,
+    "duration" : 289
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "af6fe6856b3fbb9e",
+  "name" : "Создание заказа без авторизации с валидными ингредиентами",
+  "time" : {
+    "start" : 1767128612790,
+    "stop" : 1767128614043,
+    "duration" : 1253
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "4d3707d5e93cc30b",
+  "name" : "Создание заказа с неверным хешем ингредиентов",
+  "time" : {
+    "start" : 1767128615322,
+    "stop" : 1767128616639,
+    "duration" : 1317
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5673d2c2f39d7bee",
+  "name" : "Создание заказа с авторизацией и валидными ингредиентами",
+  "time" : {
+    "start" : 1767128608450,
+    "stop" : 1767128612789,
+    "duration" : 4339
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3378a54f5b57f0c5",
+  "name" : "Создать уникального пользователя c существующим email",
+  "time" : {
+    "start" : 1767128600698,
+    "stop" : 1767128601322,
+    "duration" : 624
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e142a8a8e05205d4",
+  "name" : "Создание заказа без ингредиентов",
+  "time" : {
+    "start" : 1767128614051,
+    "stop" : 1767128615321,
+    "duration" : 1270
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "bd0678389a02a27a",
+  "name" : "Вход с неверным паролем",
+  "time" : {
+    "start" : 1767128602562,
+    "stop" : 1767128603761,
+    "duration" : 1199
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "9420d79e181f7eca",
+  "name" : "Вход с пустым паролем",
+  "time" : {
+    "start" : 1767128607323,
+    "stop" : 1767128608447,
+    "duration" : 1124
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1b1145c9c51d91d6",
+  "name" : "Проверка, что сервер возвращает список ингредиентов",
+  "time" : {
+    "start" : 1767128601339,
+    "stop" : 1767128602556,
+    "duration" : 1217
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

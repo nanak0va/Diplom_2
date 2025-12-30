@@ -1,0 +1,276 @@
+{
+  "uid" : "98d3104e051c652961429bf95fa0b5d6",
+  "name" : "suites",
+  "children" : [ {
+    "name" : "ru.yandex.CreateUserTest",
+    "children" : [ {
+      "name" : "Успешное создание пользователя с валидными данными",
+      "uid" : "fa145fc6e6f992b5",
+      "parentUid" : "ab743c8816d835470af1438d20b45584",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128596536,
+        "stop" : 1767128599951,
+        "duration" : 3415
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Создать уникального пользователя без обязательного поля email",
+      "uid" : "ca0914fbda2dc0ff",
+      "parentUid" : "ab743c8816d835470af1438d20b45584",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128600001,
+        "stop" : 1767128600290,
+        "duration" : 289
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Создать уникального пользователя без обязательного поля password",
+      "uid" : "f6a0cd88169ab415",
+      "parentUid" : "ab743c8816d835470af1438d20b45584",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128600291,
+        "stop" : 1767128600491,
+        "duration" : 200
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Создать уникального пользователя без обязательного поля name",
+      "uid" : "ab5b13f29db00d98",
+      "parentUid" : "ab743c8816d835470af1438d20b45584",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128600494,
+        "stop" : 1767128600697,
+        "duration" : 203
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Создать уникального пользователя c существующим email",
+      "uid" : "3378a54f5b57f0c5",
+      "parentUid" : "ab743c8816d835470af1438d20b45584",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128600698,
+        "stop" : 1767128601322,
+        "duration" : 624
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "ab743c8816d835470af1438d20b45584"
+  }, {
+    "name" : "ru.yandex.IngredientsTest",
+    "children" : [ {
+      "name" : "Проверка, что сервер возвращает список ингредиентов",
+      "uid" : "1b1145c9c51d91d6",
+      "parentUid" : "882b051ad47d1a2d4f606a871cb4a10a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128601339,
+        "stop" : 1767128602556,
+        "duration" : 1217
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "882b051ad47d1a2d4f606a871cb4a10a"
+  }, {
+    "name" : "ru.yandex.LoginTest",
+    "children" : [ {
+      "name" : "Вход с неверным паролем",
+      "uid" : "bd0678389a02a27a",
+      "parentUid" : "5da1893290625edf40f736a4f70220bc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128602562,
+        "stop" : 1767128603761,
+        "duration" : 1199
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Вход с пустым email",
+      "uid" : "29b8e66ce422ab2f",
+      "parentUid" : "5da1893290625edf40f736a4f70220bc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128603763,
+        "stop" : 1767128604952,
+        "duration" : 1189
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Вход с неверным email",
+      "uid" : "e7916a3148a4d535",
+      "parentUid" : "5da1893290625edf40f736a4f70220bc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128604954,
+        "stop" : 1767128606080,
+        "duration" : 1126
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Вход под существующим пользователем",
+      "uid" : "c2b6aa1452fe118d",
+      "parentUid" : "5da1893290625edf40f736a4f70220bc",
+      "status" : "failed",
+      "time" : {
+        "start" : 1767128606081,
+        "stop" : 1767128607321,
+        "duration" : 1240
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Вход с пустым паролем",
+      "uid" : "9420d79e181f7eca",
+      "parentUid" : "5da1893290625edf40f736a4f70220bc",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128607323,
+        "stop" : 1767128608447,
+        "duration" : 1124
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "5da1893290625edf40f736a4f70220bc"
+  }, {
+    "name" : "ru.yandex.OrdersTest",
+    "children" : [ {
+      "name" : "Создание заказа с авторизацией и валидными ингредиентами",
+      "uid" : "5673d2c2f39d7bee",
+      "parentUid" : "b1935dde25856ba95fb22288500769af",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128608450,
+        "stop" : 1767128612789,
+        "duration" : 4339
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Создание заказа без авторизации с валидными ингредиентами",
+      "uid" : "af6fe6856b3fbb9e",
+      "parentUid" : "b1935dde25856ba95fb22288500769af",
+      "status" : "failed",
+      "time" : {
+        "start" : 1767128612790,
+        "stop" : 1767128614043,
+        "duration" : 1253
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Создание заказа без ингредиентов",
+      "uid" : "e142a8a8e05205d4",
+      "parentUid" : "b1935dde25856ba95fb22288500769af",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128614051,
+        "stop" : 1767128615321,
+        "duration" : 1270
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "Создание заказа с неверным хешем ингредиентов",
+      "uid" : "4d3707d5e93cc30b",
+      "parentUid" : "b1935dde25856ba95fb22288500769af",
+      "status" : "passed",
+      "time" : {
+        "start" : 1767128615322,
+        "stop" : 1767128616639,
+        "duration" : 1317
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "newPassed" : false,
+      "newBroken" : false,
+      "retriesCount" : 0,
+      "retriesStatusChange" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "b1935dde25856ba95fb22288500769af"
+  } ]
+}

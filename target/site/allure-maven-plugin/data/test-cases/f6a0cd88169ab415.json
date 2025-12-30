@@ -1,0 +1,232 @@
+{
+  "uid" : "f6a0cd88169ab415",
+  "name" : "Создать уникального пользователя без обязательного поля password",
+  "fullName" : "ru.yandex.CreateUserTest.createUserWithoutPasswordShouldReturnError",
+  "historyId" : "9858df6bb0b5a43aa2e89f09c74c548a",
+  "time" : {
+    "start" : 1767128600291,
+    "stop" : 1767128600491,
+    "duration" : 200
+  },
+  "description" : "Тест проверяет, что нельзя создать пользователя без обязательного поля password",
+  "descriptionHtml" : "<p>Тест проверяет, что нельзя создать пользователя без обязательного поля password</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "description" : "Тест проверяет, что нельзя создать пользователя без обязательного поля password",
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Подготавливаем данные для теста",
+      "time" : {
+        "start" : 1767128600291,
+        "stop" : 1767128600292,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 0,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "Отправляем запрос на создание пользователя",
+      "time" : {
+        "start" : 1767128600292,
+        "stop" : 1767128600383,
+        "duration" : 91
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "7661b81519d0d29d",
+        "name" : "Request",
+        "source" : "7661b81519d0d29d.html",
+        "type" : "text/html",
+        "size" : 729
+      }, {
+        "uid" : "c123c14343f25c7d",
+        "name" : "HTTP/1.1 403 Forbidden",
+        "source" : "c123c14343f25c7d.html",
+        "type" : "text/html",
+        "size" : 668
+      } ],
+      "parameters" : [ {
+        "name" : "user",
+        "value" : "User(email=kandace.botsford@example.com, name=Jasmine, password=null)"
+      } ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 2,
+      "hasContent" : true,
+      "stepsCount" : 0
+    }, {
+      "name" : "Очищаем зарегистрированного пользователя, если создали",
+      "time" : {
+        "start" : 1767128600397,
+        "stop" : 1767128600491,
+        "duration" : 94
+      },
+      "status" : "passed",
+      "steps" : [ {
+        "name" : "Удаляем пользователя после теста по refresh token",
+        "time" : {
+          "start" : 1767128600397,
+          "stop" : 1767128600491,
+          "duration" : 94
+        },
+        "status" : "passed",
+        "steps" : [ {
+          "name" : "Получаем access token по логину и паролю пользователя для дальнейшего использования в запросах (аутентификация)",
+          "time" : {
+            "start" : 1767128600397,
+            "stop" : 1767128600491,
+            "duration" : 94
+          },
+          "status" : "passed",
+          "steps" : [ {
+            "name" : "Отправляем запрос на аутентификацию пользователя",
+            "time" : {
+              "start" : 1767128600397,
+              "stop" : 1767128600491,
+              "duration" : 94
+            },
+            "status" : "passed",
+            "steps" : [ ],
+            "attachments" : [ {
+              "uid" : "93419be46a1a2c7d",
+              "name" : "Request",
+              "source" : "93419be46a1a2c7d.html",
+              "type" : "text/html",
+              "size" : 693
+            }, {
+              "uid" : "ff0b115b45e53bfa",
+              "name" : "HTTP/1.1 401 Unauthorized",
+              "source" : "ff0b115b45e53bfa.html",
+              "type" : "text/html",
+              "size" : 655
+            } ],
+            "parameters" : [ {
+              "name" : "user",
+              "value" : "User(email=kandace.botsford@example.com, name=Jasmine, password=null)"
+            } ],
+            "shouldDisplayMessage" : false,
+            "attachmentsCount" : 2,
+            "hasContent" : true,
+            "stepsCount" : 0
+          } ],
+          "attachments" : [ ],
+          "parameters" : [ {
+            "name" : "user",
+            "value" : "User(email=kandace.botsford@example.com, name=Jasmine, password=null)"
+          } ],
+          "shouldDisplayMessage" : false,
+          "attachmentsCount" : 2,
+          "hasContent" : true,
+          "stepsCount" : 1
+        } ],
+        "attachments" : [ ],
+        "parameters" : [ {
+          "name" : "user",
+          "value" : "User(email=kandace.botsford@example.com, name=Jasmine, password=null)"
+        }, {
+          "name" : "accessTokens",
+          "value" : "null"
+        } ],
+        "shouldDisplayMessage" : false,
+        "attachmentsCount" : 2,
+        "hasContent" : true,
+        "stepsCount" : 2
+      }, {
+        "name" : "Удаляем пользователя после теста по refresh token",
+        "time" : {
+          "start" : 1767128600491,
+          "stop" : 1767128600491,
+          "duration" : 0
+        },
+        "status" : "passed",
+        "steps" : [ ],
+        "attachments" : [ ],
+        "parameters" : [ {
+          "name" : "user",
+          "value" : "null"
+        }, {
+          "name" : "accessTokens",
+          "value" : "null"
+        } ],
+        "shouldDisplayMessage" : false,
+        "attachmentsCount" : 0,
+        "hasContent" : true,
+        "stepsCount" : 0
+      } ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "shouldDisplayMessage" : false,
+      "attachmentsCount" : 2,
+      "hasContent" : true,
+      "stepsCount" : 4
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "shouldDisplayMessage" : false,
+    "attachmentsCount" : 4,
+    "hasContent" : true,
+    "stepsCount" : 7
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "ru.yandex"
+  }, {
+    "name" : "testClass",
+    "value" : "ru.yandex.CreateUserTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "createUserWithoutPasswordShouldReturnError"
+  }, {
+    "name" : "suite",
+    "value" : "ru.yandex.CreateUserTest"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-SRTCE6R"
+  }, {
+    "name" : "thread",
+    "value" : "3684@DESKTOP-SRTCE6R.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "story",
+    "value" : "Негативный сценарий регистрации"
+  }, {
+    "name" : "feature",
+    "value" : "Создание пользователя API /auth/register"
+  }, {
+    "name" : "epic",
+    "value" : "API Тесты"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "f6a0cd88169ab415.json",
+  "parameterValues" : [ ]
+}
