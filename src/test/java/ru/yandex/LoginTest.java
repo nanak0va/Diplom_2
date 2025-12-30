@@ -4,10 +4,7 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 import static ru.yandex.api.ResponseSpec.error401_incorrectCredentials;
 import static ru.yandex.api.ResponseSpec.success200;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,8 +19,11 @@ public class LoginTest extends BaseTest {
 
     LoginService loginService;
 
+    @Override
     @Before
+    @Step("Подготавливаем данные для теста")
     public void init() {
+        super.init();
         loginService = new LoginService();
     }
 

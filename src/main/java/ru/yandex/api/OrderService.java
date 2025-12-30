@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import ru.yandex.dto.entity.IngredientData;
 import ru.yandex.dto.requests.CreateOrderRequestData;
 import ru.yandex.dto.responses.GetIngredientsResponseData;
-import ru.yandex.model.AccessToken;
+import ru.yandex.model.AccessTokens;
 import ru.yandex.utils.IngredientTypes;
 
 public class OrderService extends AbstractService {
@@ -23,16 +23,16 @@ public class OrderService extends AbstractService {
     }
 
     @Step("Отправляем запрос на создание заказа")
-    public ValidatableResponse sendCreateOrder(CreateOrderRequestData request, AccessToken accessToken) {
+    public ValidatableResponse sendCreateOrder(CreateOrderRequestData request, AccessTokens accessToken) {
         return post(CREATE_ORDER, accessToken, request).then();
     }
 
     @Step("Отправляем запрос на получение всех ингредиентов")
-    public ValidatableResponse sendGetAllIngredients(AccessToken accessToken) {
+    public ValidatableResponse sendGetAllIngredients(AccessTokens accessToken) {
         return get(GET_INGREDIENTS, accessToken).then();
     }
 
-    public List<IngredientData> getAvailableIngredients(AccessToken accessToken) {
+    public List<IngredientData> getAvailableIngredients(AccessTokens accessToken) {
         return sendGetAllIngredients(accessToken)
                 .spec(success200())
                 .body("data", not(emptyArray()))
@@ -58,7 +58,7 @@ public class OrderService extends AbstractService {
     }
 
     @Step("Добавляем необходимые ингредиенты в список доступных ингредиентов")
-    public List<IngredientData> addRequairedIngredientsToAvailableIngredients(AccessToken accessToken) {
+    public List<IngredientData> addRequairedIngredientsToAvailableIngredients(AccessTokens accessToken) {
 
         List<IngredientData> availableIngredients = new ArrayList<>();
 

@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.api.LoginService;
 import ru.yandex.api.OrderService;
-import ru.yandex.model.AccessToken;
+import ru.yandex.model.AccessTokens;
 
 @Epic("API Тесты")
 @Feature("Работа с ингредиентами API /ingredients")
@@ -19,12 +19,15 @@ public class IngredientsTest extends BaseTest {
     public static final String INGREDIENTS_SCHEMA_JSON = "schemas/ingredients-response-schema.json";
 
     OrderService orderService;
-    AccessToken accessToken;
+    AccessTokens accessToken;
 
+    @Override
     @Before
+    @Step("Подготавливаем данные для теста")
     public void init() {
+        super.init();
         orderService = new OrderService();
-        accessToken = new LoginService().signInAndGetAccessToken(defaultUser);
+        accessToken = new LoginService().signInAndGetAccessTokens(defaultUser);
     }
 
     @Test

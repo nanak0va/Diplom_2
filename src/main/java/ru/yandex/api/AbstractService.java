@@ -7,7 +7,7 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import lombok.AllArgsConstructor;
-import ru.yandex.model.AccessToken;
+import ru.yandex.model.AccessTokens;
 
 @AllArgsConstructor
 public abstract class AbstractService {
@@ -18,31 +18,36 @@ public abstract class AbstractService {
     public RequestSpecification getRequestSpec() {
         return given().baseUri(baseURI)
                 .filter(new AllureRestAssured())
+                .log()
+                .ifValidationFails()
                 .contentType(requestsContentType)
                 .accept(requestsContentType);
     }
 
-    public Response request(Method method, String url, Object body) {
-        return getRequestSpec().when().body(body).request(method, url);
-    }
+    public Response request(Method method, String url, AccessTokens accessTokens, Object body) {
+        var request = given().spec(getRequestSpec());
 
-    public Response request(Method method, String url, AccessToken accessToken, Object body) {
-        return getRequestSpec()
-                .header("Authorization", (accessToken == null ? "" : accessToken.getToken()))
-                .when()
-                .body(body)
-                .request(method, url);
+        if (accessTokens != null && accessTokens.getAccessToken() != null) {
+            request.header("Authorization", accessTokens.getAccessToken());
+        }
+
+        if (body != null) {
+            request.body(body);
+        }
+
+        return request.when().request(method, url);
     }
 
     public Response post(String url, Object body) {
-        return request(Method.POST, url, body);
+        return request(Method.POST, url, null, body);
     }
 
-    public Response post(String url, AccessToken accessToken, Object body) {
-        return request(Method.POST, url, accessToken, body);
+    public Response post(String url, AccessTokens accessTokens, Object body) {
+        return request(Method.POST, url, accessTokens, body);
     }
 
-    public Response get(String url, AccessToken authToken) {
-        return request(Method.GET, url, authToken);
+    public Response get(String url, AccessTokens accessTokens) {
+        return request(Method.GET, url, accessTokens, null);
     }
+
 }

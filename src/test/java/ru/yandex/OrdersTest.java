@@ -13,7 +13,7 @@ import ru.yandex.api.LoginService;
 import ru.yandex.api.OrderService;
 import ru.yandex.dto.entity.IngredientData;
 import ru.yandex.dto.requests.CreateOrderRequestData;
-import ru.yandex.model.AccessToken;
+import ru.yandex.model.AccessTokens;
 import ru.yandex.model.User;
 
 @Epic("API Тесты")
@@ -24,15 +24,18 @@ public class OrdersTest extends BaseTest {
 
     OrderService orderService;
     User user;
-    AccessToken accessToken;
+    AccessTokens accessToken;
 
     List<IngredientData> availableIngredients;
 
+    @Override
     @Before
+    @Step("Подготавливаем данные для теста")
     public void init() {
+        super.init();
         orderService = new OrderService();
         user = defaultUser;
-        accessToken = new LoginService().signInAndGetAccessToken(defaultUser);
+        accessToken = new LoginService().signInAndGetAccessTokens(defaultUser);
 
         availableIngredients = orderService.addRequairedIngredientsToAvailableIngredients(accessToken);
     }

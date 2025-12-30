@@ -1,16 +1,13 @@
 package ru.yandex.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class User {
-    String email;
-    String name;
-    String password;
+@NoArgsConstructor
+public class AccessTokens {
+    private String accessToken;
+    private String refreshToken;
 }
