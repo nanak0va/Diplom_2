@@ -1,15 +1,16 @@
 package ru.yandex;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static ru.yandex.api.ResponseSpec.error401_incorrectCredentials;
+import static ru.yandex.api.ResponseSpec.error401IncorrectCredentials;
 import static ru.yandex.api.ResponseSpec.success200;
+import static ru.yandex.utils.TestDataGenerator.generateEmail;
+import static ru.yandex.utils.TestDataGenerator.generatePassword;
 
 import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.api.LoginService;
-import ru.yandex.dto.requests.LoginUserRequestData;
+import ru.yandex.model.User;
 
 @Epic("API Тесты")
 @Feature("Логин пользователя API /auth/*")
@@ -17,14 +18,12 @@ public class LoginTest extends BaseTest {
 
     public static final String LOGIN_RESPONSE_SCHEMA_JSON = "schemas/login-user-response-schema.json";
 
-    LoginService loginService;
-
     @Override
     @Before
     @Step("Подготавливаем данные для теста")
     public void init() {
         super.init();
-        loginService = new LoginService();
+        accessTokens = loginService.createUserBeforeTest(userForMainScenario);
     }
 
     @Test
@@ -32,33 +31,65 @@ public class LoginTest extends BaseTest {
     @DisplayName("Вход под существующим пользователем")
     @Description("Тест проверяет, что пользователь может войти под своими учетными данными")
     public void loginWithValidCredentialsShouldReturnCorrectResponse() {
-
-        LoginUserRequestData loginUserRequestData =
-                new LoginUserRequestData(defaultUser.getEmail(), defaultUser.getPassword());
-
         loginService
-                .signIn(loginUserRequestData)
+                .signIn(userForMainScenario)
                 .spec(success200())
                 .body(matchesJsonSchemaInClasspath(LOGIN_RESPONSE_SCHEMA_JSON));
     }
 
     @Test
     @Story("Негативный сценарий авторизации")
-    @DisplayName("Вход с неверным логином и паролем")
+    @DisplayName("Вход с неверным паролем")
     @Description("Тест проверяет, что пользователь не может войти под неверными учетными данными")
-    public void loginWithoutValidCredentialsShouldReturn401() {
-        LoginUserRequestData loginUserRequestData = new LoginUserRequestData("Donald@Duck.com", "SuperDuck123");
+    public void loginWithoutValidPasswordShouldReturn401() {
+        var user = User.builder()
+                .email(userForMainScenario.getEmail())
+                .name(null)
+                .password(generatePassword())
+                .build();
 
-        loginService.signIn(loginUserRequestData).spec(error401_incorrectCredentials());
+        loginService.signIn(user).spec(error401IncorrectCredentials());
     }
 
     @Test
     @Story("Негативный сценарий авторизации")
-    @DisplayName("Вход с пустыми логином и паролем")
-    @Description("Тест проверяет, что пользователь не может войти под пустыми учетными данными")
-    public void loginWithEmptyCredentialsShouldReturn401() {
-        LoginUserRequestData loginUserRequestData = new LoginUserRequestData();
+    @DisplayName("Вход с неверным email")
+    @Description("Тест проверяет, что пользователь не может войти под неверными учетными данными")
+    public void loginWithoutValidEmailShouldReturn401() {
+        var user = User.builder()
+                .email(generateEmail())
+                .name(null)
+                .password(userForMainScenario.getPassword())
+                .build();
 
-        loginService.signIn(loginUserRequestData).spec(error401_incorrectCredentials());
+        loginService.signIn(user).spec(error401IncorrectCredentials());
+    }
+
+    @Test
+    @Story("Негативный сценарий авторизации")
+    @DisplayName("Вход с пустым паролем")
+    @Description("Тест проверяет, что пользователь не может войти под пустыми учетными данными")
+    public void loginWithEmptyPasswordShouldReturn401() {
+        var user = User.builder()
+                .email(userForMainScenario.getEmail())
+                .name(null)
+                .password(null)
+                .build();
+
+        loginService.signIn(user).spec(error401IncorrectCredentials());
+    }
+
+    @Test
+    @Story("Негативный сценарий авторизации")
+    @DisplayName("Вход с пустым email")
+    @Description("Тест проверяет, что пользователь не может войти под пустыми учетными данными")
+    public void loginWithEmptyEmailShouldReturn401() {
+        var user = User.builder()
+                .email(null)
+                .name(null)
+                .password(userForMainScenario.getPassword())
+                .build();
+
+        loginService.signIn(user).spec(error401IncorrectCredentials());
     }
 }

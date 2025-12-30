@@ -3,18 +3,16 @@ package ru.yandex;
 import static io.qameta.allure.SeverityLevel.CRITICAL;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static ru.yandex.api.ResponseSpec.*;
+import static ru.yandex.utils.TestDataGenerator.generateHash;
 
 import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.api.LoginService;
 import ru.yandex.api.OrderService;
 import ru.yandex.dto.entity.IngredientData;
 import ru.yandex.dto.requests.CreateOrderRequestData;
-import ru.yandex.model.AccessTokens;
-import ru.yandex.model.User;
 
 @Epic("API Тесты")
 @Feature("Работа с заказами API /orders")
@@ -23,8 +21,6 @@ public class OrdersTest extends BaseTest {
     public static final String ORDER_CREATE_SCHEMA_JSON = "schemas/order-create-response-schema.json";
 
     OrderService orderService;
-    User user;
-    AccessTokens accessToken;
 
     List<IngredientData> availableIngredients;
 
@@ -34,10 +30,8 @@ public class OrdersTest extends BaseTest {
     public void init() {
         super.init();
         orderService = new OrderService();
-        user = defaultUser;
-        accessToken = new LoginService().signInAndGetAccessTokens(defaultUser);
-
-        availableIngredients = orderService.addRequairedIngredientsToAvailableIngredients(accessToken);
+        accessTokens = loginService.createUserBeforeTest(userForMainScenario);
+        availableIngredients = orderService.addRequairedIngredientsToAvailableIngredients(accessTokens);
     }
 
     @Test
@@ -51,7 +45,7 @@ public class OrdersTest extends BaseTest {
                 .addAllIngredients(orderService.getListOfIngredientIds(availableIngredients));
 
         orderService
-                .sendCreateOrder(createOrderRequestData, accessToken)
+                .sendCreateOrder(createOrderRequestData, accessTokens)
                 .spec(success200())
                 .body(matchesJsonSchemaInClasspath(ORDER_CREATE_SCHEMA_JSON));
     }
@@ -76,7 +70,7 @@ public class OrdersTest extends BaseTest {
     public void createOrderWithAuthAndEmptyIngredientsShouldReturn400() {
         CreateOrderRequestData createOrderRequestData = new CreateOrderRequestData();
 
-        orderService.sendCreateOrder(createOrderRequestData, accessToken).spec(error400());
+        orderService.sendCreateOrder(createOrderRequestData, accessTokens).spec(error400());
     }
 
     @Test
@@ -86,8 +80,8 @@ public class OrdersTest extends BaseTest {
     @Severity(CRITICAL)
     public void createOrderWithInvalidIngredientHashShouldReturn500() {
         CreateOrderRequestData createOrderRequestData = new CreateOrderRequestData();
-        createOrderRequestData.addIngredient("------------------------");
+        createOrderRequestData.addIngredient(generateHash());
 
-        orderService.sendCreateOrder(createOrderRequestData, accessToken).spec(error500());
+        orderService.sendCreateOrder(createOrderRequestData, accessTokens).spec(error500());
     }
 }

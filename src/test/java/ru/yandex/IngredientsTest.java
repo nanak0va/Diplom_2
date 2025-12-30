@@ -8,9 +8,7 @@ import io.qameta.allure.*;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.api.LoginService;
 import ru.yandex.api.OrderService;
-import ru.yandex.model.AccessTokens;
 
 @Epic("API Тесты")
 @Feature("Работа с ингредиентами API /ingredients")
@@ -19,15 +17,14 @@ public class IngredientsTest extends BaseTest {
     public static final String INGREDIENTS_SCHEMA_JSON = "schemas/ingredients-response-schema.json";
 
     OrderService orderService;
-    AccessTokens accessToken;
 
-    @Override
     @Before
     @Step("Подготавливаем данные для теста")
+    @Override
     public void init() {
         super.init();
         orderService = new OrderService();
-        accessToken = new LoginService().signInAndGetAccessTokens(defaultUser);
+        accessTokens = loginService.createUserBeforeTest(userForMainScenario);
     }
 
     @Test
@@ -37,7 +34,7 @@ public class IngredientsTest extends BaseTest {
     @Severity(BLOCKER)
     public void getIngredientsShouldReturnAllIngredients() {
         orderService
-                .sendGetAllIngredients(accessToken)
+                .sendGetAllIngredients(accessTokens)
                 .spec(success200())
                 .body(matchesJsonSchemaInClasspath(INGREDIENTS_SCHEMA_JSON));
     }

@@ -50,4 +50,7 @@ public abstract class AbstractService {
         return request(Method.GET, url, accessTokens, null);
     }
 
+    public Response delete(String url, AccessTokens accessTokens) {
+        return request(Method.DELETE, url, accessTokens, null);
+    }
 }

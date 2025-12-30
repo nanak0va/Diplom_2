@@ -54,7 +54,7 @@ public class OrderService extends AbstractService {
     }
 
     public List<String> getListOfIngredientIds(List<IngredientData> ingredients) {
-        return ingredients.stream().map(IngredientData::get_id).collect(Collectors.toList());
+        return ingredients.stream().map(IngredientData::getId).collect(Collectors.toList());
     }
 
     @Step("Добавляем необходимые ингредиенты в список доступных ингредиентов")

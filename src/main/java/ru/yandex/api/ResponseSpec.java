@@ -44,19 +44,19 @@ public class ResponseSpec {
                 .build();
     }
 
-    public static ResponseSpecification error401_incorrectCredentials() {
+    public static ResponseSpecification error401IncorrectCredentials() {
         return baseError(SC_UNAUTHORIZED)
                 .expectBody(MESSAGE, is("email or password are incorrect"))
                 .build();
     }
 
-    public static ResponseSpecification error403_userAlreadyExists() {
+    public static ResponseSpecification error403UserAlreadyExists() {
         return baseError(SC_FORBIDDEN)
                 .expectBody(MESSAGE, is("User already exists"))
                 .build();
     }
 
-    public static ResponseSpecification error403_requiredFields() {
+    public static ResponseSpecification error403RequiredFields() {
         return baseError(SC_FORBIDDEN)
                 .expectBody(MESSAGE, is("Email, password and name are required fields"))
                 .build();
