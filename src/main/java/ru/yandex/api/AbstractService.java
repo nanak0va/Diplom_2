@@ -38,7 +38,7 @@ public abstract class AbstractService {
         return request.when().request(method, url);
     }
 
-    public Response post(String url, Object body) {
+    public Response postWithoutAuth(String url, Object body) {
         return request(Method.POST, url, null, body);
     }
 

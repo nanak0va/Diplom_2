@@ -1,6 +1,5 @@
 package ru.yandex.api;
 
-import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.emptyString;
 import static org.hamcrest.Matchers.not;
 import static ru.yandex.api.Endpoints.*;
@@ -24,14 +23,14 @@ public class LoginService extends AbstractService {
 
     @Step("Отправляем запрос на создание пользователя")
     public ValidatableResponse register(User user) {
-        CreateUserRequestData request = new CreateUserRequestData(user.getEmail(), user.getName(), user.getPassword());
-        return post(REGISTER_USER, request).then();
+        CreateUserRequestData request = new CreateUserRequestData(user.getEmail(), user.getPassword(), user.getName());
+        return postWithoutAuth(REGISTER_USER, request).then();
     }
 
     @Step("Отправляем запрос на аутентификацию пользователя")
     public ValidatableResponse signIn(User user) {
         LoginUserRequestData request = new LoginUserRequestData(user.getEmail(), user.getPassword());
-        return post(LOGIN_USER, request).then();
+        return postWithoutAuth(LOGIN_USER, request).then();
     }
 
     @Step("Удаляем пользователя")
@@ -41,27 +40,17 @@ public class LoginService extends AbstractService {
 
     @Step(
             "Получаем access token по логину и паролю пользователя для дальнейшего использования в запросах (аутентификация)")
-    public AccessTokens signInAndGetAccessTokens(User user) {
-        LoginUserResponseData loginUserResponse = signIn(user)
-                .spec(success200())
-                .body("accessToken", not(emptyString()))
-                .body("refreshToken", not(emptyString()))
-                .extract()
-                .as(LoginUserResponseData.class);
-
-        return new AccessTokens(loginUserResponse.getAccessToken(), loginUserResponse.getRefreshToken());
-    }
-
-    @Step(
-            "Получаем access token по логину и паролю пользователя для дальнейшего использования в запросах (аутентификация)")
     public AccessTokens signInAndGetAccessTokensWithoutValidation(User user) {
-        ValidatableResponse loginUserResponse = signIn(user);
-        if (loginUserResponse.extract().statusCode() != SC_OK) {
+        ValidatableResponse response = signIn(user);
+
+        LoginUserResponseData loginUserResponse = response.extract().as(LoginUserResponseData.class);
+
+        if (loginUserResponse.getAccessToken() == null
+                || loginUserResponse.getAccessToken().isEmpty()) {
             return null;
         }
-        LoginUserResponseData loginUserResponseData =
-                loginUserResponse.extract().as(LoginUserResponseData.class);
-        return new AccessTokens(loginUserResponseData.getAccessToken(), loginUserResponseData.getRefreshToken());
+
+        return new AccessTokens(loginUserResponse.getAccessToken(), loginUserResponse.getRefreshToken());
     }
 
     @Step("Регистрируем пользователя перед тестом и получаем access token и refresh token")
@@ -92,6 +81,6 @@ public class LoginService extends AbstractService {
     public ValidatableResponse logoutUser(AccessTokens accessTokens) {
         LogoutRequestData request = new LogoutRequestData(accessTokens.getRefreshToken());
 
-        return post(LOGOUT_USER, request).then();
+        return postWithoutAuth(LOGOUT_USER, request).then();
     }
 }

@@ -1,17 +1,6 @@
 {
   "total" : 4,
   "items" : [ {
-    "uid" : "5da1893290625edf40f736a4f70220bc",
-    "name" : "ru.yandex.LoginTest",
-    "statistic" : {
-      "failed" : 1,
-      "broken" : 0,
-      "skipped" : 0,
-      "passed" : 4,
-      "unknown" : 0,
-      "total" : 5
-    }
-  }, {
     "uid" : "b1935dde25856ba95fb22288500769af",
     "name" : "ru.yandex.OrdersTest",
     "statistic" : {
@@ -25,6 +14,17 @@
   }, {
     "uid" : "ab743c8816d835470af1438d20b45584",
     "name" : "ru.yandex.CreateUserTest",
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 5,
+      "unknown" : 0,
+      "total" : 5
+    }
+  }, {
+    "uid" : "5da1893290625edf40f736a4f70220bc",
+    "name" : "ru.yandex.LoginTest",
     "statistic" : {
       "failed" : 0,
       "broken" : 0,
